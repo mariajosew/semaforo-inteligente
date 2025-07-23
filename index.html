@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semaforo Inteligente</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <main> class
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/img6.png" class="d-block" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/img2.png" class="d-block" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/img3.png" class="d-block" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </main>
+
+
+    <!-- Barra de navegación -->
+    <nav>
+        <div class="logo"><img src="img/logoo (1).ico" alt></div>
+        <ul class="nav-links">
+            <li><a href="#about">Nosotros</a></li>
+            <li><a href="#services">Servicios</a></li>
+            <li><a href="#reviews">Reseñas</a></li>
+            <li><a href="#socials">Redes Sociales</a></li>
+            <li><a href="#" onclick="showLogin()">Iniciar Sesión</a></li>
+            <li><a href="#" onclick="showRegister()">Registrarse</a></li>
+        </ul>
+    </nav>
+
+    <!-- Banner principal -->
+    <section class="banner">
+        <h1>Semaforo Inteligente</h1>
+        <p>Explora nuestros servicios</p>
+        <button onclick="mostrarMasInformacion()">Ver más
+                informacion</button>
+    </section>
+
+    <!-- Sección de 'Nosotros' -->
+    <section id="about" class="about">
+        <h2>Sobre Nosotros</h2>
+        <p>Nuestro proyecto consiste en diseñar un semáforo inteligente que incremente la seguridad de los estudiantes de primaria de la Institución Educativa República de Uruguay, ubicada en la comuna 5 de Medellín. Utilizando sensores y microcontroladores,
+            se busca que el semáforo se active de forma automática al detectar estudiantes esperando para cruzar, regulando así el tráfico de manera segura.</p>
+    </section>
+
+    <!-- Sección de Servicios  -->
+    <section id="services" class="services">
+        <h2>Nuestros Servicios</h2>
+        <div class="service-item">
+            <img src="img/im5.png" alt="Seguidad">
+            <p>• Mejorar la Seguridad Vial: implementar un sistema que garantice la seguridad de los estudiantes de primaria al cruzar calles con alto flujo vehicular.
+            </p>
+        </div>
+        <div class="service-item">
+            <img src="img/img2.png" alt="Para Evitar Accidentes">
+            <p>• Reducir Accidentes de Tránsito: Disminuir la incidencia de accidentes viales Institución Educativa República de Uruguay.</p>
+        </div>
+        <div class="service-item">
+            <img src="img/img3.png" alt="Nuestros Niños">
+            <p>•Fomentar la Educación Vial: promover la conciencia y educación vial entre los estudiantes, para que comprendan la importancia de la seguridad al cruzar calles.</p>
+
+            <!-- Contenedor para servicios adicionales (oculto inicialmente) -->
+            <div id="masServicios" class="hidden">
+                <div class="service-item">
+                    <img src="img/o.jpg" alt="...">
+                    <p>• </p>
+                </div>
+                <div class="service-item">
+                    <img src="img/img4.png" alt="Semaforo Interactivo">
+                    <p>• Este es un semaforo, algo parecido a la realidad
+                    </p>
+                </div>
+            </div>
+    </section>
+
+    <!-- Sección de Reseñas de Clientes -->
+    <section id="reviews" class="reviews">
+        <h2>Opiniones de Nuestros Clientes</h2>
+        <div class="review">
+            <p>"Excelente servicio, lo recomiendo!" - Cliente 1</p>
+        </div>
+        <div class="review">
+            <p>"Gran experiencia al investigar." - Cliente 2</p>
+        </div>
+    </section>
+
+    <!-- Redes Sociales -->
+    <section id="socials" class="socials">
+        <h2>Conéctate con Nosotros</h2>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/SEMAFOROINTELIGENTE+/" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/SEMAFOROINTELIGENTE+.com/" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.twitter.com/SEMAFOROINTELIGENTE+" target="_blank">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Formulario de Registro -->
+    <div id="registerForm" class="modal" style="display: none;">
+        <h2>Registrarse</h2>
+        <form onsubmit="register(event)">
+            <label for="registerEmail">Correo Electrónico:</label>
+            <input type="email" id="registerEmail" required>
+            <label for="registerPassword">Contraseña:</label>
+            <input type="password" id="registerPassword" required>
+            <button type="submit">Registrarse</button>
+            <button type="button" onclick="closeModal()">Cerrar</button>
+        </form>
+    </div>
+
+    <!-- Formulario de Inicio de Sesión -->
+    <div id="loginForm" class="modal" style="display: none;">
+        <h2>Iniciar Sesión</h2>
+        <form onsubmit="login(event)">
+            <label for="loginEmail">Correo Electrónico:</label>
+            <input type="email" id="loginEmail" required>
+            <label for="loginPassword">Contraseña:</label>
+            <input type="password" id="loginPassword" required>
+            <button type="submit">Iniciar Sesión</button>
+            <button type="button" onclick="closeModal()">Cerrar</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; Gracias por visitarnos.</p>
+    </footer>
+
+    <!-- Código JavaScript -->
+    <script>
+        // Mostrar formulario de registro
+        function showRegister() {
+            document.getElementById('registerForm').style.display = 'block';
+        }
+
+        // Mostrar formulario de inicio de sesión
+        function showLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+        }
+
+        // Cerrar los formularios de registro e inicio de sesión
+        function closeModal() {
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'none';
+        }
+
+        // Función para registrar al usuario
+        function register(event) {
+            event.preventDefault(); // Evita que la página se recargue al enviar el formulario
+
+            // Obtener valores de los campos de registro
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+
+            // Guardar los datos del usuario en localStorage
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userPassword', password);
+
+            // Confirmación de registro y cerrar modal
+            alert('Registro exitoso. Ahora puedes iniciar sesión.');
+            closeModal();
+        }
+
+        // Función para iniciar sesión
+        function login(event) {
+            event.preventDefault(); // Evita que la página se recargue al enviar el formulario
+
+            // Obtener valores de los campos de inicio de sesión
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Recuperar datos guardados en localStorage
+            const storedEmail = localStorage.getItem('userEmail');
+            const storedPassword = localStorage.getItem('userPassword');
+
+            // Validar si los datos ingresados coinciden con los guardados
+            if (email === storedEmail && password === storedPassword) {
+                alert('Inicio de sesión exitoso');
+                closeModal();
+            } else {
+                alert('Correo o contraseña incorrectos. Por favor, inténtalo de nuevo.');
+            }
+        }
+
+        // Función para mostrar más productos
+        function mostrarMasProductos() {
+            const masProductos = document.getElementById("masProductos");
+            masProductos.classList.toggle("hidden");
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
