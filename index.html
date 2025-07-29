@@ -14,17 +14,17 @@
 </head>
 
 <body>
-    <main> class
+    <main>
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img/img6.png" class="d-block" alt="...">
+                    <img src="img/img1.1.webp" class="d-block" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/img2.png" class="d-block" alt="...">
+                    <img src="img/img1.2.webp" class="d-block" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/img3.png" class="d-block" alt="...">
+                    <img src="img/img1.3.webp" class="d-block" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -48,7 +48,7 @@
             <li><a href="#reviews">Reseñas</a></li>
             <li><a href="#socials">Redes Sociales</a></li>
             <li><a href="#" onclick="showLogin()">Iniciar Sesión</a></li>
-            <li><a href="#" onclick="showRegister()">Registrarse</a></li>
+            <li><a href="#" onclick="showRegister()">Contacto</a></li>
         </ul>
     </nav>
 
@@ -71,16 +71,16 @@
     <section id="services" class="services">
         <h2>Nuestros Servicios</h2>
         <div class="service-item">
-            <img src="img/im5.png" alt="Seguidad">
+            <img src="img/img1.1.webp" alt="Seguidad">
             <p>• Mejorar la Seguridad Vial: implementar un sistema que garantice la seguridad de los estudiantes de primaria al cruzar calles con alto flujo vehicular.
             </p>
         </div>
         <div class="service-item">
-            <img src="img/img2.png" alt="Para Evitar Accidentes">
+            <img src="img/img1.2.webp" alt="Para Evitar Accidentes">
             <p>• Reducir Accidentes de Tránsito: Disminuir la incidencia de accidentes viales Institución Educativa República de Uruguay.</p>
         </div>
         <div class="service-item">
-            <img src="img/img3.png" alt="Nuestros Niños">
+            <img src="img/img1.3.webp" alt="Nuestros Niños">
             <p>•Fomentar la Educación Vial: promover la conciencia y educación vial entre los estudiantes, para que comprendan la importancia de la seguridad al cruzar calles.</p>
 
             <!-- Contenedor para servicios adicionales (oculto inicialmente) -->
@@ -126,13 +126,21 @@
 
     <!-- Formulario de Registro -->
     <div id="registerForm" class="modal" style="display: none;">
-        <h2>Registrarse</h2>
-        <form onsubmit="register(event)">
+        <h2>Contacto</h2>
+        <form onsubmit="contacto(event)">
             <label for="registerEmail">Correo Electrónico:</label>
             <input type="email" id="registerEmail" required>
-            <label for="registerPassword">Contraseña:</label>
-            <input type="password" id="registerPassword" required>
-            <button type="submit">Registrarse</button>
+
+            <label for="registerNombre">Nombre:</label>
+            <input type="text" id="registerNombre" required>
+
+            <label for="registerTelefono">Teléfono:</label>
+            <input type="tel" id="registerTelefono" required>
+
+            <label for="registerDescripcion">Descripción:</label>
+            <textarea id="registerDescripcion" required></textarea>
+
+            <button type="submit">Contacto</button>
             <button type="button" onclick="closeModal()">Cerrar</button>
         </form>
     </div>
