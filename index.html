@@ -163,35 +163,33 @@
     <!-- Formulario de Registro -->
     <div id="registerForm" class="modal" style="display: none;">
         <h2>Contacto</h2>
-        <form onsubmit="contacto(event)">
-            <label for="registerEmail">Correo Electrónico:</label>
-            <input type="email" id="registerEmail" required>
+        <form id="loginresena">
 
             <label for="registerNombre">Nombre:</label>
-            <input type="text" id="registerNombre" required>
-
-            <label for="registerTelefono">Teléfono:</label>
-            <input type="tel" id="registerTelefono" required>
+            <input type="text" id="registerNombre">
 
             <label for="registerDescripcion">Descripción:</label>
             <textarea id="registerDescripcion" required></textarea>
 
             <button type="submit">Contacto</button>
             <button type="button" onclick="closeModal()">Cerrar</button>
+            <div id="messageDiv"></div>
         </form>
     </div>
 
     <!-- Formulario de Inicio de Sesión -->
     <div id="loginForm" class="modal" style="display: none;">
         <h2>Iniciar Sesión</h2>
-        <form onsubmit="login(event)">
+        <form id="sesionForm">
             <label for="loginEmail">Correo Electrónico:</label>
-            <input type="email" id="loginEmail" required>
+            <input type="text" id="loginEmail" required>
             <label for="loginPassword">Contraseña:</label>
             <input type="password" id="loginPassword" required>
             <button type="submit">Iniciar Sesión</button>
             <button type="button" onclick="closeModal()">Cerrar</button>
         </form>
+        <p id="mensaje"></p>
+
     </div>
 
     <footer>
@@ -200,7 +198,146 @@
 
     <!-- Código JavaScript -->
     <script>
-        // Mostrar formulario de registro
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Modal de Más Información -->
+    <div id="infoModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeInfoModal()">&times;</span>
+            <h2 class="modal-title">Información Adicional</h2>
+            <div class="modal-body">
+                <p>
+                    Esta página ha sido creada con el propósito de concientizar sobre la importancia de la seguridad vial en zonas escolares. Nuestro semáforo inteligente busca proteger a los estudiantes mediante un sistema automatizado y eficiente.
+                </p>
+                <p>
+                    El proyecto fue desarrollado por estudiantes comprometidos con la innovación y la seguridad, utilizando tecnologías como sensores, microcontroladores y algoritmos de detección de presencia.
+                </p>
+                <p>
+                    ¡Gracias por visitar nuestra página!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ...otros scripts ya incluidos -->
+    <script>
+        function mostrarMasInformacion() {
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function closeInfoModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+        document.getElementById('sesionForm').addEventListener("submit", async(e) => {
+                e.preventDefault();
+                //aca logica para inicio
+                const username = document.getElementById("loginEmail").value;
+                const password = document.getElementById("loginPassword").value;
+
+
+                try {
+                    const res = await fetch("http://localhost/SEMAFOROMCM.CODE/backend/login.php", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            username,
+                            password
+                        })
+                    });
+
+                    const data = await res.json();
+                    document.getElementById("mensaje").innerText = data.message;
+                    console.log('hola', data);
+
+                    if (data.success) {
+                        console.log(data);
+
+                        document.getElementById("mensaje").style.color = "green";
+                        window.location.href = "./paginas/admin.html"
+                    } else {
+                        document.getElementById("mensaje").style.color = "red";
+                    }
+                } catch (error) {
+                    console.log(error);
+                    document.getElementById("mensaje").innerText = "Error de conexión con el servidor.";
+                    document.getElementById("mensaje").style.color = "red";
+                }
+            })
+            // Mostrar formulario de registro
+        document.getElementById("loginresena").addEventListener("submit", async(e) => {
+            e.preventDefault();
+            const registerNombre = document.getElementById("registerNombre").value.trim() || "Anónimo";
+            const registerDescripcion = document.getElementById("registerDescripcion").value.trim();
+            const messageDiv = document.getElementById("messageDiv");
+
+            messageDiv.textContent = "";
+
+            if (!registerDescripcion) {
+                messageDiv.textContent = "El contenido de la reseña es obligatorio.";
+                return;
+            }
+
+            fetch("http://localhost/SEMAFOROMCM.CODE/backend/resena.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: registerNombre,
+                        content: registerDescripcion
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        messageDiv.textContent = data.error;
+                    } else {
+                        document.getElementById("registerNombre").value = "";
+                        document.getElementById("registerDescripcion").value = "";
+                        alert("¡Reseña enviada con éxito!");
+                        //cargarResenas();
+                    }
+                })
+                .catch(error => {
+                    console.error("Error al enviar reseña:", error);
+                    messageDiv.textContent = "Error al conectar con el servidor.";
+                });
+        });
+
+        // function cargarResenas() {
+        //   fetch("http://localhost/reviews/backend/get_reviews.php")
+        //     .then(response => response.json())
+        //     .then(data => {
+        //       const container = document.getElementById("resenas");
+        //       container.innerHTML = "";
+
+        //       if (!Array.isArray(data) || data.length === 0) {
+        //         container.innerHTML = "<p>No hay reseñas disponibles.</p>";
+        //         return;
+        //       }
+
+        //       data.forEach(resena => {
+        //         const div = document.createElement("div");
+        //         div.className = "review";
+        //         div.innerHTML = `
+        //           <strong>${resena.name}</strong><br>
+        //           <small>${resena.created_at}</small>
+        //           <p>${resena.content}</p>
+        //         `;
+        //         container.appendChild(div);
+        //       });
+        //     })
+        //     .catch(err => {
+        //       document.getElementById("resenas").innerHTML = "<p>Error al cargar reseñas.</p>";
+        //     });
+        // }
+
+        // window.onload = cargarResenas;
+
+        //})
+
         function showRegister() {
             document.getElementById('registerForm').style.display = 'block';
         }
@@ -212,7 +349,7 @@
 
         // Cerrar los formularios de registro e inicio de sesión
         function closeModal() {
-            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('LoginForm').style.display = 'none';
             document.getElementById('loginForm').style.display = 'none';
         }
 
@@ -225,8 +362,8 @@
             const password = document.getElementById('registerPassword').value;
 
             // Guardar los datos del usuario en localStorage
-            localStorage.setItem('userEmail', email);
-            localStorage.setItem('userPassword', password);
+            localStorage.setItem("loginEmail", email);
+            localStorage.setItem("loginPassword", password);
 
             // Confirmación de registro y cerrar modal
             alert('Registro exitoso. Ahora puedes iniciar sesión.');
@@ -269,36 +406,6 @@
             }
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- Modal de Más Información -->
-    <div id="infoModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close" onclick="closeInfoModal()">&times;</span>
-            <h2 class="modal-title">Información Adicional</h2>
-            <div class="modal-body">
-                <p>
-                    Esta página ha sido creada con el propósito de concientizar sobre la importancia de la seguridad vial en zonas escolares. Nuestro semáforo inteligente busca proteger a los estudiantes mediante un sistema automatizado y eficiente.
-                </p>
-                <p>
-                    El proyecto fue desarrollado por estudiantes comprometidos con la innovación y la seguridad, utilizando tecnologías como sensores, microcontroladores y algoritmos de detección de presencia.
-                </p>
-                <p>
-                    ¡Gracias por visitar nuestra página!
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- ...otros scripts ya incluidos -->
-    <script>
-        function mostrarMasInformacion() {
-            document.getElementById('infoModal').style.display = 'flex';
-        }
-
-        function closeInfoModal() {
-            document.getElementById('infoModal').style.display = 'none';
-        }
-    </script>
     <script>
         function guardarReseña(id, visible) {
             localStorage.setItem(id, visible);
@@ -326,9 +433,7 @@
                 div.innerHTML = `<p>${reseña.texto}<br><span class="cliente">${reseña.autor}</span></p>`;
                 contenedor.appendChild(div);
             }
-        }); <
-
-        }
+        });
     </script>
 
     </script>
@@ -347,10 +452,6 @@
             }
         });
     </script>
-
-</body>
-
-</html>
 
 </body>
 
