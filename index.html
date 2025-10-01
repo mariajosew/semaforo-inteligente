@@ -133,13 +133,7 @@
 
     <!-- Sección de Reseñas de Clientes -->
     <section id="reviews" class="reviews">
-        <div class="review">
-            <p>"Excelente servicio, lo recomiendo!"<br><span class="cliente">Cliente 1 - 01/04/25</span></p>
-        </div>
-        <div class="review">
-            <p>"Gran experiencia al investigar."<br><span class="cliente">Cliente 2 - 22/05/25</span></p>
-        </div>
-        <div id="contenedorReseñas"></div>
+        <div id="contenedorResenas"></div>
     </section>
 
 
@@ -171,7 +165,7 @@
             <label for="registerDescripcion">Descripción:</label>
             <textarea id="registerDescripcion" required></textarea>
 
-            <button type="submit">Contacto</button>
+            <button type="submit">Enviar</button>
             <button type="button" onclick="closeModal()">Cerrar</button>
             <div id="messageDiv"></div>
         </form>
@@ -236,7 +230,7 @@
 
 
                 try {
-                    const res = await fetch("http://localhost/SEMAFOROMCM.CODE/backend/login.php", {
+                    const res = await fetch("http://localhost/SEMAFOROMCM.CODE/SemaforoInteligente/backend/login.php", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -279,7 +273,7 @@
                 return;
             }
 
-            fetch("http://localhost/SEMAFOROMCM.CODE/backend/resena.php", {
+            fetch("http://localhost/SEMAFOROMCM.CODE/SemaforoInteligente/backend/resena.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -306,33 +300,33 @@
                 });
         });
 
-        // function cargarResenas() {
-        //   fetch("http://localhost/reviews/backend/get_reviews.php")
-        //     .then(response => response.json())
-        //     .then(data => {
-        //       const container = document.getElementById("resenas");
-        //       container.innerHTML = "";
+        function cargarResenas() {
+            fetch("http://localhost/reviews/backend/get_reviews.php")
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById("reviews");
+                    container.innerHTML = "";
 
-        //       if (!Array.isArray(data) || data.length === 0) {
-        //         container.innerHTML = "<p>No hay reseñas disponibles.</p>";
-        //         return;
-        //       }
+                    if (!Array.isArray(data) || data.length === 0) {
+                        container.innerHTML = "<p>No hay reseñas disponibles.</p>";
+                        return;
+                    }
 
-        //       data.forEach(resena => {
-        //         const div = document.createElement("div");
-        //         div.className = "review";
-        //         div.innerHTML = `
-        //           <strong>${resena.name}</strong><br>
-        //           <small>${resena.created_at}</small>
-        //           <p>${resena.content}</p>
-        //         `;
-        //         container.appendChild(div);
-        //       });
-        //     })
-        //     .catch(err => {
-        //       document.getElementById("resenas").innerHTML = "<p>Error al cargar reseñas.</p>";
-        //     });
-        // }
+                    data.forEach(resena => {
+                        const div = document.createElement("div");
+                        div.className = "review";
+                        div.innerHTML = `
+                  <strong>${resena.name}</strong><br>
+                  <small>${resena.created_at}</small>
+                  <p>${resena.content}</p>
+                `;
+                        container.appendChild(div);
+                    });
+                })
+                .catch(err => {
+                    document.getElementById("resenas").innerHTML = "<p>Error al cargar reseñas.</p>";
+                });
+        }
 
         // window.onload = cargarResenas;
 
@@ -413,27 +407,35 @@
         }
     </script>
     <script>
-        const reseñas = [{
-            id: 'reseña1',
-            texto: '"Excelente servicio, me gustó mucho."',
-            autor: 'Juan Pérez - 01/04/25'
-        }, {
-            id: 'reseña2',
-            texto: '"Gran experiencia al investigar."',
-            autor: 'Cliente 2 - 22/05/25'
-        }];
+        function cargarResenas() {
+            fetch("http://localhost/SEMAFOROMCM.CODE/SemaforoInteligente/backend/getreviews.php")
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById("contenedorResenas");
+                    container.innerHTML = "";
 
-        const contenedor = document.getElementById("contenedorReseñas");
+                    if (!Array.isArray(data) || data.length === 0) {
+                        container.innerHTML = "<p>No hay reseñas disponibles.</p>";
+                        return;
+                    }
 
-        reseñas.forEach(reseña => {
-            const visible = localStorage.getItem(reseña.id) === "true";
-            if (visible) {
-                const div = document.createElement("div");
-                div.classList.add("review");
-                div.innerHTML = `<p>${reseña.texto}<br><span class="cliente">${reseña.autor}</span></p>`;
-                contenedor.appendChild(div);
-            }
-        });
+                    data.forEach(resena => {
+                        const div = document.createElement("div");
+                        div.className = "review";
+                        div.innerHTML = `
+              <strong>${resena.name}</strong><br>
+              <small>${resena.created_at}</small>
+              <p>${resena.content}</p>
+            `;
+                        container.appendChild(div);
+                    });
+                })
+                .catch(err => {
+                    document.getElementById("resenas").innerHTML = "<p>Error al cargar reseñas.</p>";
+                });
+        }
+
+        window.onload = cargarResenas;
     </script>
 
     </script>
