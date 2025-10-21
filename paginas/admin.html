@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administración de Reseñas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #c2f5e8;
+        }
+        
+        h2 {
+            color: #333;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #e0dada;
+        }
+        
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #9a9fa1;
+        }
+        
+        th {
+            background-color: #7d7878;
+        }
+        
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 5px;
+        }
+        
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            opacity: 0.9;
+        }
+        
+        .btn-delete {
+            color: white;
+            background-color: rgb(194, 71, 71);
+            border: none;
+        }
+        
+        .btn-save {
+            background-color: rgb(53, 144, 53);
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Panel de Administración de Reseñas</h2>
+
+    <table id="reviewsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Contenido</th>
+                <th>Visible</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Se cargan dinámicamente -->
+        </tbody>
+    </table>
+
+    <script>
+        const API_BASE = 'http://localhost/semaforo-inteligente/backend/'; // Cambia esta ruta si tu backend está en otro lugar
+
+        // Obtener reseñas del backend
+        async function fetchReviews() {
+            try {
+                const response = await fetch(`${API_BASE}getReviewsAdmin.php`);
+                const reviews = await response.json();
+                renderTable(reviews);
+            } catch (error) {
+                console.error('Error al cargar reseñas:', error);
+                alert("Error al cargar reseñas. Revisa la consola.");
+            }
+        }
+
+        // Mostrar reseñas en la tabla
+        function renderTable(reviews) {
+            const tbody = document.querySelector("#reviewsTable tbody");
+            tbody.innerHTML = "";
+
+            reviews.forEach(review => {
+                const tr = document.createElement("tr");
+
+                tr.innerHTML = `
+                    <td>${review.id}</td>
+                    <td><input type="text" value="${review.name}" id="name-${review.id}"></td>
+                    <td><input type="text" value="${review.content}" id="content-${review.id}"></td>
+                    <td>
+                        <select id="visible-${review.id}">
+                            <option value="1" ${review.visible == 1 ? "selected" : ""}>Sí</option>
+                            <option value="0" ${review.visible == 0 ? "selected" : ""}>No</option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn-save" onclick="updateReview(${review.id})">Guardar</button>
+                        <button class="btn-delete" onclick="deleteReview(${review.id})">Borrar</button>
+                    </td>
+                `;
+
+                tbody.appendChild(tr);
+            });
+        }
+
+        // // Actualizar reseña
+        async function updateReview(id) {
+            const name = document.getElementById(`name-${id}`).value;
+            const content = document.getElementById(`content-${id}`).value;
+            const visible = document.getElementById(`visible-${id}`).value;
+
+            const formData = new FormData();
+            formData.append("id", id);
+            formData.append("name", name);
+            formData.append("content", content);
+            formData.append("visible", visible);
+
+            try {
+                const response = await fetch(`${API_BASE}updatereviews.php`, {
+                    method: "POST",
+                    body: formData
+                });
+
+                const result = await response.json();
+                if (result.status === "success") {
+                    alert("Reseña actualizada correctamente.");
+                } else {
+                    alert("Error al actualizar: " + result.message);
+                }
+
+                fetchReviews(); // recargar tabla
+
+            } catch (error) {
+                console.error("Error al actualizar:", error);
+                alert("Error de red al actualizar.");
+            }
+        }
+
+        // // Borrar reseña
+        async function deleteReview(id) {
+            if (!confirm("¿Estás seguro de que deseas borrar esta reseña?")) return;
+
+            const formData = new FormData();
+            formData.append("id", id);
+
+            try {
+                const response = await fetch(API_BASE + 'deletereviews.php', {
+                    method: "POST",
+                    body: formData
+                });
+
+                const result = await response.json();
+                if (result.status === "success") {
+                    alert("Reseña eliminada.");
+                    fetchReviews();
+                } else {
+                    alert("Error al eliminar: " + result.message);
+                }
+            } catch (error) {
+                console.error("Error al eliminar:", error);
+                alert("Error de red al eliminar.");
+            }
+        }
+
+        // Cargar reseñas al iniciar
+        fetchReviews();
+    </script>
+
+</body>
+
+</html>

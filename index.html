@@ -69,56 +69,86 @@
 
     <!-- Sección de Servicios  -->
     <section id="services" class="services">
-        <h2>Nuestros Servicios</h2>
-        <div class="service-item">
-            <img src="img/img1.1.webp" alt="Seguidad">
-            <p>• Mejorar la Seguridad Vial: implementar un sistema que garantice la seguridad de los estudiantes de primaria al cruzar calles con alto flujo vehicular.
-            </p>
-        </div>
-        <div class="service-item">
-            <img src="img/img1.2.webp" alt="Para Evitar Accidentes">
-            <p>• Reducir Accidentes de Tránsito: Disminuir la incidencia de accidentes viales Institución Educativa República de Uruguay.</p>
-        </div>
-        <div class="service-item">
-            <img src="img/img1.3.webp" alt="Nuestros Niños">
-            <p>•Fomentar la Educación Vial: promover la conciencia y educación vial entre los estudiantes, para que comprendan la importancia de la seguridad al cruzar calles.</p>
+        <h2 class="text-center mb-4">Nuestros Servicios</h2>
 
-            <!-- Contenedor para servicios adicionales (oculto inicialmente) -->
-            <div id="masServicios" class="hidden">
-                <div class="service-item">
-                    <img src="img/o.jpg" alt="...">
-                    <p>• </p>
+        <div class="container">
+            <div class="row g-4">
+                <!-- Tarjeta 1 -->
+                <div class="col-md-12">
+                    <div class="card shadow-sm">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4 text-center">
+                                <img src="img/img1.1.webp" class="img-fluid rounded-start" alt="Seguridad">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Mejorar la Seguridad Vial</h5>
+                                    <p class="card-text">Implementar un sistema que garantice la seguridad de los estudiantes de primaria al cruzar calles con alto flujo vehicular.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <img src="img/img4.png" alt="Semaforo Interactivo">
-                    <p>• Este es un semaforo, algo parecido a la realidad
-                    </p>
+
+                <!-- Tarjeta 2 -->
+                <div class="col-md-12">
+                    <div class="card shadow-sm">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4 text-center">
+                                <img src="img/img1.2.webp" class="img-fluid rounded-start" alt="Evitar Accidentes">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Reducir Accidentes de Tránsito</h5>
+                                    <p class="card-text">Disminuir la incidencia de accidentes viales en la Institución Educativa República de Uruguay.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="col-md-12">
+                    <div class="card shadow-sm">
+                        <div class="row g-0 align-items-center">
+                            <div class="col-md-4 text-center">
+                                <img src="img/img1.3.webp" class="img-fluid rounded-start" alt="Educación Vial">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Fomentar la Educación Vial</h5>
+                                    <p class="card-text">Promover la conciencia y educación vial entre los estudiantes, para que comprendan la importancia de la seguridad al cruzar calles.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </div>
     </section>
+
+
+
 
     <!-- Sección de Reseñas de Clientes -->
     <section id="reviews" class="reviews">
-        <h2>Opiniones de Nuestros Clientes</h2>
-        <div class="review">
-            <p>"Excelente servicio, lo recomiendo!" - Cliente 1</p>
-        </div>
-        <div class="review">
-            <p>"Gran experiencia al investigar." - Cliente 2</p>
-        </div>
+        <div id="contenedorResenas"></div>
     </section>
+
 
     <!-- Redes Sociales -->
     <section id="socials" class="socials">
         <h2>Conéctate con Nosotros</h2>
         <div class="social-icons">
-            <a href="https://www.facebook.com/SEMAFOROINTELIGENTE+/" target="_blank">
+            <a href="https://www.facebook.com/profile.php?id=61578907441243" target="_blank">
                 <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="https://www.instagram.com/SEMAFOROINTELIGENTE+.com/" target="_blank">
+            <a href="https://www.instagram.com/semaforointeligente1/
+            " target="_blank">
                 <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.twitter.com/SEMAFOROINTELIGENTE+" target="_blank">
+            <a href="https://x.com/SemaforoIn1" target="_blank">
                 <i class="fab fa-twitter"></i>
             </a>
         </div>
@@ -127,35 +157,33 @@
     <!-- Formulario de Registro -->
     <div id="registerForm" class="modal" style="display: none;">
         <h2>Contacto</h2>
-        <form onsubmit="contacto(event)">
-            <label for="registerEmail">Correo Electrónico:</label>
-            <input type="email" id="registerEmail" required>
+        <form id="loginresena">
 
             <label for="registerNombre">Nombre:</label>
-            <input type="text" id="registerNombre" required>
-
-            <label for="registerTelefono">Teléfono:</label>
-            <input type="tel" id="registerTelefono" required>
+            <input type="text" id="registerNombre">
 
             <label for="registerDescripcion">Descripción:</label>
             <textarea id="registerDescripcion" required></textarea>
 
-            <button type="submit">Contacto</button>
+            <button type="submit">Enviar</button>
             <button type="button" onclick="closeModal()">Cerrar</button>
+            <div id="messageDiv"></div>
         </form>
     </div>
 
     <!-- Formulario de Inicio de Sesión -->
     <div id="loginForm" class="modal" style="display: none;">
         <h2>Iniciar Sesión</h2>
-        <form onsubmit="login(event)">
+        <form id="sesionForm">
             <label for="loginEmail">Correo Electrónico:</label>
-            <input type="email" id="loginEmail" required>
+            <input type="text" id="loginEmail" required>
             <label for="loginPassword">Contraseña:</label>
             <input type="password" id="loginPassword" required>
             <button type="submit">Iniciar Sesión</button>
             <button type="button" onclick="closeModal()">Cerrar</button>
         </form>
+        <p id="mensaje"></p>
+
     </div>
 
     <footer>
@@ -164,7 +192,146 @@
 
     <!-- Código JavaScript -->
     <script>
-        // Mostrar formulario de registro
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!-- Modal de Más Información -->
+    <div id="infoModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeInfoModal()">&times;</span>
+            <h2 class="modal-title">Información Adicional</h2>
+            <div class="modal-body">
+                <p>
+                    Esta página ha sido creada con el propósito de concientizar sobre la importancia de la seguridad vial en zonas escolares. Nuestro semáforo inteligente busca proteger a los estudiantes mediante un sistema automatizado y eficiente.
+                </p>
+                <p>
+                    El proyecto fue desarrollado por estudiantes comprometidos con la innovación y la seguridad, utilizando tecnologías como sensores, microcontroladores y algoritmos de detección de presencia.
+                </p>
+                <p>
+                    ¡Gracias por visitar nuestra página!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ...otros scripts ya incluidos -->
+    <script>
+        function mostrarMasInformacion() {
+            document.getElementById('infoModal').style.display = 'flex';
+        }
+
+        function closeInfoModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+        document.getElementById('sesionForm').addEventListener("submit", async(e) => {
+                e.preventDefault();
+                //aca logica para inicio
+                const username = document.getElementById("loginEmail").value;
+                const password = document.getElementById("loginPassword").value;
+
+
+                try {
+                    const res = await fetch("http://localhost/semaforo-inteligente/backend/login.php", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            username,
+                            password
+                        })
+                    });
+
+                    const data = await res.json();
+                    document.getElementById("mensaje").innerText = data.message;
+                    console.log('hola', data);
+
+                    if (data.success) {
+                        console.log(data);
+
+                        document.getElementById("mensaje").style.color = "green";
+                        window.location.href = "./paginas/admin.html"
+                    } else {
+                        document.getElementById("mensaje").style.color = "red";
+                    }
+                } catch (error) {
+                    console.log(error);
+                    document.getElementById("mensaje").innerText = "Error de conexión con el servidor.";
+                    document.getElementById("mensaje").style.color = "red";
+                }
+            })
+            // Mostrar formulario de registro
+        document.getElementById("loginresena").addEventListener("submit", async(e) => {
+            e.preventDefault();
+            const registerNombre = document.getElementById("registerNombre").value.trim() || "Anónimo";
+            const registerDescripcion = document.getElementById("registerDescripcion").value.trim();
+            const messageDiv = document.getElementById("messageDiv");
+
+            messageDiv.textContent = "";
+
+            if (!registerDescripcion) {
+                messageDiv.textContent = "El contenido de la reseña es obligatorio.";
+                return;
+            }
+
+            fetch("http://localhost/semaforo-inteligente/backend/resena.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        name: registerNombre,
+                        content: registerDescripcion
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        messageDiv.textContent = data.error;
+                    } else {
+                        document.getElementById("registerNombre").value = "";
+                        document.getElementById("registerDescripcion").value = "";
+                        alert("¡Reseña enviada con éxito!");
+                        //cargarResenas();
+                    }
+                })
+                .catch(error => {
+                    console.error("Error al enviar reseña:", error);
+                    messageDiv.textContent = "Error al conectar con el servidor.";
+                });
+        });
+
+        function cargarResenas() {
+            fetch("http://localhost/semaforo-inteligente/backend/getreviews.php")
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById("reviews");
+                    container.innerHTML = "";
+
+                    if (!Array.isArray(data) || data.length === 0) {
+                        container.innerHTML = "<p>No hay reseñas disponibles.</p>";
+                        return;
+                    }
+
+                    data.forEach(resena => {
+                        const div = document.createElement("div");
+                        div.className = "review";
+                        div.innerHTML = `
+                  <strong>${resena.name}</strong><br>
+                  <small>${resena.created_at}</small>
+                  <p>${resena.content}</p>
+                `;
+                        container.appendChild(div);
+                    });
+                })
+                .catch(err => {
+                    document.getElementById("resenas").innerHTML = "<p>Error al cargar reseñas.</p>";
+                });
+        }
+
+        // window.onload = cargarResenas;
+
+        //})
+
         function showRegister() {
             document.getElementById('registerForm').style.display = 'block';
         }
@@ -176,7 +343,7 @@
 
         // Cerrar los formularios de registro e inicio de sesión
         function closeModal() {
-            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('LoginForm').style.display = 'none';
             document.getElementById('loginForm').style.display = 'none';
         }
 
@@ -189,8 +356,8 @@
             const password = document.getElementById('registerPassword').value;
 
             // Guardar los datos del usuario en localStorage
-            localStorage.setItem('userEmail', email);
-            localStorage.setItem('userPassword', password);
+            localStorage.setItem("loginEmail", email);
+            localStorage.setItem("loginPassword", password);
 
             // Confirmación de registro y cerrar modal
             alert('Registro exitoso. Ahora puedes iniciar sesión.');
@@ -198,33 +365,96 @@
         }
 
         // Función para iniciar sesión
-        function login(event) {
-            event.preventDefault(); // Evita que la página se recargue al enviar el formulario
+        function showRegister() {
+            document.getElementById('registerForm').style.display = 'block';
+        }
 
-            // Obtener valores de los campos de inicio de sesión
+        function showLogin() {
+            document.getElementById('loginForm').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'none';
+        }
+
+        function login(event) {
+            event.preventDefault(); // Evita que se recargue
+
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
 
-            // Recuperar datos guardados en localStorage
             const storedEmail = localStorage.getItem('userEmail');
             const storedPassword = localStorage.getItem('userPassword');
 
-            // Validar si los datos ingresados coinciden con los guardados
-            if (email === storedEmail && password === storedPassword) {
+            if (email === 'h@h.com' && password === '123') {
                 alert('Inicio de sesión exitoso');
-                closeModal();
+
+                // Espera 0.5 segundos y redirige
+                setTimeout(() => {
+                    window.location.href = 'paginas/reviews.html';
+                }, 500);
+
             } else {
-                alert('Correo o contraseña incorrectos. Por favor, inténtalo de nuevo.');
+                alert('Correo o contraseña incorrectos.');
             }
         }
-
-        // Función para mostrar más productos
-        function mostrarMasProductos() {
-            const masProductos = document.getElementById("masProductos");
-            masProductos.classList.toggle("hidden");
+    </script>
+    <script>
+        function guardarReseña(id, visible) {
+            localStorage.setItem(id, visible);
+            alert("Cambio guardado. Recarga la página de inicio para ver el efecto.");
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        function cargarResenas() {
+            fetch("http://localhost/semaforo-inteligente/backend/getreviews.php")
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById("contenedorResenas");
+                    container.innerHTML = "";
+
+                    if (!Array.isArray(data) || data.length === 0) {
+                        container.innerHTML = "<p>No hay reseñas disponibles.</p>";
+                        return;
+                    }
+
+                    data.forEach(resena => {
+                        const div = document.createElement("div");
+                        div.className = "review";
+                        div.innerHTML = `
+              <strong>${resena.name}</strong><br>
+              <small>${resena.created_at}</small>
+              <p>${resena.content}</p>
+            `;
+                        container.appendChild(div);
+                    });
+                })
+                .catch(err => {
+                    document.getElementById("resenas").innerHTML = "<p>Error al cargar reseñas.</p>";
+                });
+        }
+
+        window.onload = cargarResenas;
+    </script>
+
+    </script>
+    <div id="burbujaReseña" class="burbuja-reseña" style="display: none;"></div>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const mostrar = localStorage.getItem('reseña1') === "true";
+            const burbuja = document.getElementById("burbujaReseña");
+
+            if (mostrar) {
+                burbuja.innerHTML = `
+            <strong>Juan Pérez</strong><br>
+            <span>“Excelente servicio, me gustó mucho.”</span>
+            `;
+                burbuja.style.display = "block";
+            }
+        });
+    </script>
+
 </body>
 
 </html>
