@@ -230,7 +230,7 @@
 
 
                 try {
-                    const res = await fetch("http://localhost/SEMAFOROMCM.CODE/SemaforoInteligente/backend/login.php", {
+                    const res = await fetch("http://localhost/semaforo-inteligente/backend/login.php", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -273,7 +273,7 @@
                 return;
             }
 
-            fetch("http://localhost/SEMAFOROMCM.CODE/SemaforoInteligente/backend/resena.php", {
+            fetch("http://localhost/semaforo-inteligente/backend/resena.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -301,7 +301,7 @@
         });
 
         function cargarResenas() {
-            fetch("http://localhost/reviews/backend/get_reviews.php")
+            fetch("http://localhost/semaforo-inteligente/backend/getreviews.php")
                 .then(response => response.json())
                 .then(data => {
                     const container = document.getElementById("reviews");
@@ -408,7 +408,7 @@
     </script>
     <script>
         function cargarResenas() {
-            fetch("http://localhost/SEMAFOROMCM.CODE/SemaforoInteligente/backend/getreviews.php")
+            fetch("http://localhost/semaforo-inteligente/backend/getreviews.php")
                 .then(response => response.json())
                 .then(data => {
                     const container = document.getElementById("contenedorResenas");
